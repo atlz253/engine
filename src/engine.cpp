@@ -9,33 +9,9 @@
 #include "event.hpp"
 #include "global.hpp"
 #include "textureManager.hpp"
-
-extern "C"
-{
-    EXPORT int CSEngineInit()
-    {
-        return engine::init();
-    }
-
-    EXPORT int CSEngineQuit()
-    {
-        return engine::quit();
-    }
-
-    EXPORT int CSRenderClear()
-    {
-        return render::clear();
-    }
-
-    EXPORT void CSRenderPresent()
-    {
-        render::present();
-    }
-}
-
 namespace engine
 {
-    int init()
+    bool init()
     {
         std::cout << "SdlSubSystem: SDL2 initialization" << std::endl;
         if (SDL_Init(SDL_INIT_VIDEO))
@@ -79,10 +55,10 @@ namespace engine
         events::init();
         textures::init();
 
-        return 0;
+        return false;
     }
 
-    int quit()
+    bool quit()
     {
         SDL_DestroyWindow(global::window);
         SDL_DestroyRenderer(global::renderer);
@@ -96,19 +72,45 @@ namespace engine
         std::cout << "SdlSubSystem: завершение работы SDL2_ttf" << std::endl;
         TTF_Quit();
 
-        return 0;
+        return false;
     }
 }
 
 namespace render
 {
-    int clear()
+    bool clear()
     {
-        return SDL_RenderClear(global::renderer);
+        if (!SDL_RenderClear(global::renderer))
+            return false;
+        
+        return true;
     }
 
     void present()
     {
         SDL_RenderPresent(global::renderer);
+    }
+}
+
+extern "C"
+{
+    EXPORT bool CSEngineInit()
+    {
+        return engine::init();
+    }
+
+    EXPORT bool CSEngineQuit()
+    {
+        return engine::quit();
+    }
+
+    EXPORT bool CSRenderClear()
+    {
+        return render::clear();
+    }
+
+    EXPORT void CSRenderPresent()
+    {
+        render::present();
     }
 }

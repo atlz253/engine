@@ -16,10 +16,11 @@ namespace events
 {
     SDL_Event *event;
 
-    int init()
+    bool init()
     {
         event = new SDL_Event;
-        return 0;
+        
+        return false;
     }
 
     bool check(void)

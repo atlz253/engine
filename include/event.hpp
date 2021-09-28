@@ -10,7 +10,7 @@ extern "C"
 
 namespace events
 {
-    int init();
+    bool init();
 
     bool check(void);
 

@@ -5,24 +5,24 @@
 
 namespace engine
 {
-  int init(); // TODO: flags?
+  bool init(); // TODO: flags?
 
-  int quit();
+  bool quit();
 }
 
 namespace render
 {
-  int clear();
+  bool clear();
 
   void present();
 }
 
 extern "C"
 {
-	EXPORT int CSEngineInit();
-	EXPORT int CSEngineQuit();
+	EXPORT bool CSEngineInit();
+	EXPORT bool CSEngineQuit();
 
-	EXPORT int CSRenderClear();
+	EXPORT bool CSRenderClear();
 	EXPORT void CSRenderPresent();
 }
 
