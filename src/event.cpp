@@ -4,6 +4,14 @@
 
 #include "SDL.h"
 
+extern "C"
+{
+    __declspec(dllexport) bool __cdecl CSEventCheck()
+    {
+        return events::check();
+    }
+}
+
 namespace events
 {
     SDL_Event *event;

@@ -10,14 +10,37 @@
 #include "global.hpp"
 #include "textureManager.hpp"
 
+extern "C"
+{
+    __declspec(dllexport) int __cdecl CSEngineInit()
+    {
+        return engine::init();
+    }
+
+    __declspec(dllexport) int __cdecl CSEngineQuit()
+    {
+        return engine::quit();
+    }
+
+    __declspec(dllexport) int __cdecl CSRenderClear()
+    {
+        return render::clear();
+    }
+
+    __declspec(dllexport) void __cdecl CSRenderPresent()
+    {
+        render::present();
+    }
+}
+
 namespace engine
 {
     int init()
     {
-        std::cout << "SdlSubSystem: инициализация SDL2" << std::endl;
+        std::cout << "SdlSubSystem: SDL2 initialization" << std::endl;
         if (SDL_Init(SDL_INIT_VIDEO))
         {
-            std::cout << "Ошибка инициализации SDL2:" << SDL_GetError() << std::endl;
+            std::cout << "SDL2 initialization error:" << SDL_GetError() << std::endl;
             exit(EXIT_FAILURE);
         }
 
@@ -26,17 +49,17 @@ namespace engine
         */
         SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR, "0");
 
-        std::cout << "SdlSubSystem: инициализация SDL2_Image" << std::endl;
+        std::cout << "SdlSubSystem: SDL2_Image initialization" << std::endl;
         if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
         {
-            std::cout << "Ошибка инициализации SDL2_Image:" << IMG_GetError() << std::endl;
+            std::cout << "SDL2_Image initialization error:" << IMG_GetError() << std::endl;
             exit(EXIT_FAILURE);
         }
 
-        std::cout << "SdlSubSystem: инициализация SDL2_ttf" << std::endl;
+        std::cout << "SdlSubSystem: SDL2_ttf initialization" << std::endl;
         if (TTF_Init())
         {
-            std::cout << "Ошибка инициализации SDL2_Image:" << TTF_GetError() << std::endl;
+            std::cout << "SDL2_Image initialization error:" << TTF_GetError() << std::endl;
             exit(EXIT_FAILURE);
         }
 
