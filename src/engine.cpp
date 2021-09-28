@@ -12,22 +12,22 @@
 
 extern "C"
 {
-    __declspec(dllexport) int __cdecl CSEngineInit()
+    EXPORT int CSEngineInit()
     {
         return engine::init();
     }
 
-    __declspec(dllexport) int __cdecl CSEngineQuit()
+    EXPORT int CSEngineQuit()
     {
         return engine::quit();
     }
 
-    __declspec(dllexport) int __cdecl CSRenderClear()
+    EXPORT int CSRenderClear()
     {
         return render::clear();
     }
 
-    __declspec(dllexport) void __cdecl CSRenderPresent()
+    EXPORT void CSRenderPresent()
     {
         render::present();
     }

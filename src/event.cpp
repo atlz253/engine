@@ -6,7 +6,7 @@
 
 extern "C"
 {
-    __declspec(dllexport) bool __cdecl CSEventCheck()
+    EXPORT bool CSEventCheck()
     {
         return events::check();
     }

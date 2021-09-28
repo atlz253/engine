@@ -1,9 +1,11 @@
 #ifndef EVENT
 #define EVENT
 
+#include "define.hpp"
+
 extern "C"
 {
-    __declspec(dllexport) bool __cdecl CSEventCheck();
+    EXPORT bool CSEventCheck();
 }
 
 namespace events

@@ -50,6 +50,7 @@ set(
 
 set(
     HPP_FILES
+    ${INCLUDE_DIR}/define.hpp
     ${INCLUDE_DIR}/engine.hpp
     ${INCLUDE_DIR}/entity.hpp
     ${INCLUDE_DIR}/event.hpp
@@ -65,6 +66,7 @@ set(
 #
 add_library(
     engine 
+    SHARED
     ${HPP_FILES} 
     ${CPP_FILES}
 )

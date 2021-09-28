@@ -1,6 +1,8 @@
 #ifndef ENGINE
 #define ENGINE
 
+#include "define.hpp"
+
 namespace engine
 {
   int init(); // TODO: flags?
@@ -17,11 +19,11 @@ namespace render
 
 extern "C"
 {
-	__declspec(dllexport) int __cdecl CSEngineInit();
-	__declspec(dllexport) int __cdecl CSEngineQuit();
+	EXPORT int CSEngineInit();
+	EXPORT int CSEngineQuit();
 
-	__declspec(dllexport) int __cdecl CSRenderClear();
-	__declspec(dllexport) void __cdecl CSRenderPresent();
+	EXPORT int CSRenderClear();
+	EXPORT void CSRenderPresent();
 }
 
 #endif // ENGINE
