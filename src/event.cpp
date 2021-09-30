@@ -4,14 +4,6 @@
 
 #include "SDL.h"
 
-extern "C"
-{
-    EXPORT bool CSEventCheck()
-    {
-        return events::check();
-    }
-}
-
 namespace events
 {
     SDL_Event *event;

@@ -91,26 +91,3 @@ namespace render
         SDL_RenderPresent(global::renderer);
     }
 }
-
-extern "C"
-{
-    EXPORT bool CSEngineInit()
-    {
-        return engine::init();
-    }
-
-    EXPORT bool CSEngineQuit()
-    {
-        return engine::quit();
-    }
-
-    EXPORT bool CSRenderClear()
-    {
-        return render::clear();
-    }
-
-    EXPORT void CSRenderPresent()
-    {
-        render::present();
-    }
-}

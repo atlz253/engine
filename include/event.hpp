@@ -1,13 +1,6 @@
 #ifndef EVENT
 #define EVENT
 
-#include "define.hpp"
-
-extern "C"
-{
-    EXPORT bool CSEventCheck();
-}
-
 namespace events
 {
     bool init();

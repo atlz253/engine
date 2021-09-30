@@ -1,6 +1,6 @@
-#include "entity.hpp"
+#include "wrapper.hpp"
 
-#include "define.hpp"
+#include "entity.hpp"
 
 extern "C"
 {

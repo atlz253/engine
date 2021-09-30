@@ -43,7 +43,9 @@ set(
     ${SRC_DIR}/objects/layer.cpp
     ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
+    ${SRC_DIR}/wrapper/engineWrapper.cpp
     ${SRC_DIR}/wrapper/entityWrapper.cpp
+    ${SRC_DIR}/wrapper/eventWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/event.cpp
     ${SRC_DIR}/global.cpp
@@ -51,7 +53,6 @@ set(
 
 set(
     HPP_FILES
-    ${INCLUDE_DIR}/define.hpp
     ${INCLUDE_DIR}/engine.hpp
     ${INCLUDE_DIR}/entity.hpp
     ${INCLUDE_DIR}/event.hpp
@@ -59,6 +60,7 @@ set(
     ${INCLUDE_DIR}/layer.hpp
     ${INCLUDE_DIR}/type.hpp
     ${SRC_DIR}/objects/textureManager.hpp
+    ${SRC_DIR}/wrapper/wrapper.hpp
     ${SRC_DIR}/global.hpp
 )
 
