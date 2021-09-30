@@ -15,7 +15,7 @@ Button::Button(std::string text, Font *font, int w, int h, int x, int y, void (*
 
   _text = new Text(text, font);
   _text->getSize(&textW, &textH);
-  _text->setPosition(x + (_geometry->w - textW) / 2, y + (_geometry->h - textH) / 2);
+  _text->SetPosition(x + (_geometry->w - textW) / 2, y + (_geometry->h - textH) / 2);
 }
 
 void Button::process(void)

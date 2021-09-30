@@ -24,49 +24,56 @@ protected:
 
 public:
     Entity();
-
-    Entity(int w, int h, int x = 0, int y = 0);
-
-    Entity(std::string path, int w, int h, int x = 0, int y = 0);
-
-    Entity(std::string path, int entityW, int entityH, int entityX, int entityY, int tileW, int tileH, int tileX, int tileY);
+    Entity(UINT16 w, UINT16 h, INT16 x = 0, INT16 y = 0); // TODO: use struct Rect
+    Entity(std::string path, UINT16 w, UINT16 h, INT16 x = 0, INT16 y = 0);
+    Entity(std::string path, UINT16 entityW, UINT16 entityH, INT16 entityX, INT16 entityY, UINT16 tileW, UINT16 tileH, INT16 tileX, INT16 tileY);
 
     /*
       Конструктор копирования
       Копия будет указывать на ту же текстуру
-  */
+    */
     Entity(Entity *&entity, int x = 0, int y = 0);
 
-    /*
-      Изменение размера сущности
-      int w, h - ширина и высота сущности
-  */
-    void setSize(int w, int h);
+    /* Size functions */
 
-    /*
-      Изменение положения сущности
-      int x, y - расположение сущности
-  */
-    void setPosition(int x, int y);
+    UINT16 GetWidth(void);
+    UINT16 GetHeight(void);
+
+    void SetWidth(UINT16 w);
+    void SetHeight(UINT16 h);
+    void SetSize(UINT16 w, UINT16 h);
+
+    /* Position functions */
+
+    INT16 GetX(void);
+    INT16 GetY(void);
+
+    void SetX(INT16 x);
+    void SetY(INT16 y);
+    void SetPosition(INT16 x, INT16 y);
+
+    /* Texture functions */
+    
+    void SetTexture(const char* path);
 
     /*
       Изменение используемой области текстуры
       int x, y - координаты области
       int w, h - размер области
-  */
+    */
     void setTile(int x, int y, int w, int h);
 
     /*
       Изменение угла наклона
       Без параметров угол установится в 0
-  */
+    */
     void setAngle(const double angle = 0);
 
     /*
       Установка центра сущности
       Координаты выставляются относительно геометрии сущности
       Без параметров центр будет установлен в верхнем левом углу сущности
-  */
+    */
     void setCenter(const int x = 0, const int y = 0);
 
     /*
@@ -78,23 +85,23 @@ public:
       SDL_FLIP_VERTICAL                       - текстура отразиться по вертикали
       SDL_FLIP_HORIZONTAL                     - текстура отразиться по горизонтали
       SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL - текстура отразиться по диагонали
-  */
+    */
     void setFlip(const Flip flip = FLIP_NONE);
 
     /*
       Получение направления сущности
-  */
+    */
     Flip getFlip(void);
 
     /*
       Метод вызывается при каждой перерисовке кадра перед отрисовкой на экран.
       Здесь происходит изменение состояния и параметров сущности.
-  */
+    */
     virtual void process(void);
 
     /*
       Отрисовка сущности на экран
-  */
+    */
     virtual void render(void);
 
     ~Entity();

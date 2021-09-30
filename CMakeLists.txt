@@ -43,6 +43,7 @@ set(
     ${SRC_DIR}/objects/layer.cpp
     ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
+    ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/event.cpp
     ${SRC_DIR}/global.cpp

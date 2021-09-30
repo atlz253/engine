@@ -1,10 +1,17 @@
 #ifndef TYPE
 #define TYPE
 
+#include <cstdint>
+
+#define INT16 std::int16_t
+#define INT32 std::int32_t
+
+#define UINT16 std::uint16_t
+
 typedef struct Rect
 {
-    int16_t x, y;
-    uint16_t w, h;
+    INT16 x, y;
+    UINT16 w, h;
 } Rect;
 
 typedef struct Point
