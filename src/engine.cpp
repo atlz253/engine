@@ -11,7 +11,7 @@
 #include "textureManager.hpp"
 namespace engine
 {
-    bool init()
+    bool init(INT32 w, INT32 h)
     {
         std::cout << "SdlSubSystem: SDL2 initialization" << std::endl;
         if (SDL_Init(SDL_INIT_VIDEO))
@@ -23,7 +23,9 @@ namespace engine
         /*
             Не отключать композитор рабочих столов на linux дистрибутивах
         */
+       #ifdef __unix__
         SDL_SetHint(SDL_HINT_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR, "0");
+       #endif
 
         std::cout << "SdlSubSystem: SDL2_Image initialization" << std::endl;
         if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
@@ -40,8 +42,8 @@ namespace engine
         }
 
         std::cout << "Creating window" << std::endl;
-        global::window = SDL_CreateWindow("wall", SDL_WINDOWPOS_CENTERED_MASK, SDL_WINDOWPOS_CENTERED_MASK, SCREEN_WIDTH,
-                                          SCREEN_HEIGHT, SDL_WINDOW_OPENGL);
+        global::window = SDL_CreateWindow("engine", SDL_WINDOWPOS_CENTERED_MASK, SDL_WINDOWPOS_CENTERED_MASK, w,
+                                          h, SDL_WINDOW_OPENGL);
         if (!global::window)
         {
             std::cout << "Failed to create window:" << SDL_GetError() << std::endl;
@@ -51,7 +53,7 @@ namespace engine
         global::renderer = SDL_CreateRenderer(global::window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
         if (!global::renderer)
             std::cout << "Failed to create renderer:" << SDL_GetError() << std::endl;
-        
+
         events::init();
         textures::init();
 
@@ -82,7 +84,7 @@ namespace render
     {
         if (!SDL_RenderClear(global::renderer))
             return false;
-        
+
         return true;
     }
 

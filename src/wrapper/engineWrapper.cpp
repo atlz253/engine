@@ -4,9 +4,9 @@
 
 extern "C"
 {
-    EXPORT bool EngineInit()
+    EXPORT bool EngineInit(INT32 w, INT32 h)
     {
-        return engine::init();
+        return engine::init(w, h);
     }
 
     EXPORT bool EngineQuit()
