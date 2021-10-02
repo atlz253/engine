@@ -36,7 +36,7 @@ Entity::Entity(std::string path, UINT16 entityW, UINT16 entityH, INT16 entityX, 
                INT16 tileY)
     : Entity(path, entityW, entityH, entityX, entityY)
 {
-    setTile(tileX, tileY, tileW, tileH);
+    SetTile({tileX, tileY, tileW, tileH});
 }
 
 Entity::Entity(Entity *&entity, int x, int y) : Entity::Entity()
@@ -118,20 +118,91 @@ void Entity::SetPosition(INT16 x, INT16 y)
     SetY(y);
 }
 
-void Entity::SetTexture(const char* path)
-{
-    _texture = getTexture(path); // FIXME: one to many texture problem, memory leak
-}
-
-void Entity::setTile(int x, int y, int w, int h)
+UINT16 Entity::GetTileW(void)
 {
     if (!_tile)
         _tile = new Rect;
 
-    _tile->x = x;
-    _tile->y = y;
+    return _tile->w;
+}
+
+UINT16 Entity::GetTileH(void)
+{
+    if (!_tile)
+        _tile = new Rect;
+
+    return _tile->h;
+}
+
+void Entity::SetTileW(UINT16 w)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
     _tile->w = w;
+}
+
+void Entity::SetTileH(UINT16 h)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
     _tile->h = h;
+}
+
+void Entity::SetTileSize(UINT16 w, UINT16 h)
+{
+    SetTileW(w);
+    SetTileH(h);
+}
+
+INT16 Entity::GetTileX(void)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
+    return _tile->x;
+}
+
+INT16 Entity::GetTileY(void)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
+    return _tile->y;
+}
+
+void Entity::SetTileX(INT16 x)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
+    _tile->x = x;
+}
+
+void Entity::SetTileY(INT16 y)
+{
+    if (!_tile)
+        _tile = new Rect;
+    
+    _tile->y = y;
+}
+
+void Entity::SetTilePosition(INT16 x, INT16 y)
+{
+    SetTileX(x);
+    SetTileY(y);
+}
+
+void Entity::SetTile(Rect tile)
+{
+    SetTileSize(tile.w, tile.h);
+    SetTilePosition(tile.x, tile.y);
+}
+
+void Entity::SetTexture(const char* path)
+{
+    _texture = getTexture(path); // FIXME: one to many texture problem, memory leak
 }
 
 void Entity::setAngle(const double angle)

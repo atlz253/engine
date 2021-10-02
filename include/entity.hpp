@@ -52,16 +52,27 @@ public:
     void SetY(INT16 y);
     void SetPosition(INT16 x, INT16 y);
 
+    /* Tile functions */
+
+    UINT16 GetTileW(void);
+    UINT16 GetTileH(void);
+
+    void SetTileW(UINT16 w);
+    void SetTileH(UINT16 h);
+    void SetTileSize(UINT16 w, UINT16 h);
+
+    INT16 GetTileX(void);
+    INT16 GetTileY(void);
+
+    void SetTileX(INT16 x);
+    void SetTileY(INT16 y);
+    void SetTilePosition(INT16 x, INT16 y);
+
+    void SetTile(Rect tile);
+
     /* Texture functions */
     
     void SetTexture(const char* path);
-
-    /*
-      Изменение используемой области текстуры
-      int x, y - координаты области
-      int w, h - размер области
-    */
-    void setTile(int x, int y, int w, int h);
 
     /*
       Изменение угла наклона
