@@ -53,6 +53,7 @@ namespace engine
         global::renderer = SDL_CreateRenderer(global::window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
         if (!global::renderer)
             std::cout << "Failed to create renderer:" << SDL_GetError() << std::endl;
+        SDL_SetRenderDrawBlendMode(global::renderer, SDL_BLENDMODE_BLEND); // TODO: read docs about this
 
         events::init();
         textures::init();
