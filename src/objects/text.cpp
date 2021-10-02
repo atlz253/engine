@@ -31,7 +31,7 @@ void Text::updateTexture(void)
   if (!text.length())
     return;
 
-  SDL_Surface *surf = TTF_RenderUTF8_Blended(font, text.c_str(), *color);
+  SDL_Surface *surf = TTF_RenderUTF8_Blended(font, text.c_str(), {color->r, color->g, color->b, color->a});
   if (!surf)
   {
     std::cout << "Failed to convert text to surface" << TTF_GetError() << std::endl;

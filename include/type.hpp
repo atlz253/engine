@@ -6,6 +6,7 @@
 #define INT16 std::int16_t
 #define INT32 std::int32_t
 
+#define UINT8 std::uint8_t
 #define UINT16 std::uint16_t
 
 typedef struct Rect
@@ -16,13 +17,22 @@ typedef struct Rect
 
 typedef struct Point
 {
-    int x;
-    int y;
+    INT32 x;
+    INT32 y;
 } Point;
 
 typedef struct SDL_Texture Texture;
 
-typedef struct SDL_Color Color;
+typedef struct Color
+{
+    UINT8 r;
+    UINT8 g;
+    UINT8 b;
+    UINT8 a;
+} Color;
+
+#define COLOR_WHITE {(UINT8)255, (UINT8) 255, (UINT8) 255, (UINT8) 255}
+#define COLOR_BLACK {(UINT8)0, (UINT8)0, (UINT8)0, (UINT8)0}
 
 typedef enum
 {

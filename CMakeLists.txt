@@ -40,12 +40,14 @@ set(
     ${SRC_DIR}/input/mouse.cpp
     ${SRC_DIR}/menu/button.cpp
     ${SRC_DIR}/objects/entity.cpp
+    ${SRC_DIR}/objects/geometry.cpp
     ${SRC_DIR}/objects/layer.cpp
     ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
     ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
+    ${SRC_DIR}/wrapper/geometryWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/event.cpp
     ${SRC_DIR}/global.cpp
@@ -56,6 +58,7 @@ set(
     ${INCLUDE_DIR}/engine.hpp
     ${INCLUDE_DIR}/entity.hpp
     ${INCLUDE_DIR}/event.hpp
+    ${INCLUDE_DIR}/geometry.hpp
     ${INCLUDE_DIR}/interface.hpp
     ${INCLUDE_DIR}/layer.hpp
     ${INCLUDE_DIR}/type.hpp
