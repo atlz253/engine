@@ -11,24 +11,26 @@
 
 typedef struct Rect
 {
-    INT16 x, y;
-    UINT16 w, h;
+    INT16 x = 0;
+    INT16 y = 0;
+    UINT16 w = 0;
+    UINT16 h = 0;
 } Rect;
 
 typedef struct Point
 {
-    INT32 x;
-    INT32 y;
+    INT32 x = 0;
+    INT32 y = 0;
 } Point;
 
 typedef struct SDL_Texture Texture;
 
 typedef struct Color
 {
-    UINT8 r;
-    UINT8 g;
-    UINT8 b;
-    UINT8 a;
+    UINT8 r = 255;
+    UINT8 g = 255;
+    UINT8 b = 255;
+    UINT8 a = 255;
 } Color;
 
 #define COLOR_WHITE {(UINT8)255, (UINT8) 255, (UINT8) 255, (UINT8) 255}
