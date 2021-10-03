@@ -40,14 +40,16 @@ set(
     ${SRC_DIR}/input/mouse.cpp
     ${SRC_DIR}/menu/button.cpp
     ${SRC_DIR}/objects/entity.cpp
-    ${SRC_DIR}/objects/geometry.cpp
     ${SRC_DIR}/objects/layer.cpp
+    ${SRC_DIR}/objects/line.cpp
+    ${SRC_DIR}/objects/rectangle.cpp
     ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
     ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
-    ${SRC_DIR}/wrapper/geometryWrapper.cpp
+    ${SRC_DIR}/wrapper/lineWrapper.cpp
+    ${SRC_DIR}/wrapper/rectangleWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/event.cpp
     ${SRC_DIR}/global.cpp
