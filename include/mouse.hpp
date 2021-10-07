@@ -1,17 +1,13 @@
 #ifndef MOUSE
 #define MOUSE
 
+#include "type.hpp"
+
 namespace mouse
 {
-    int init(void);
+    Point Position(void);
 
-    bool initStatus(void);
-
-    void position(int *x, int *y);
-
-    bool leftClick(void);
-
-    void quit(void);
+    bool LeftClick(void);
 }
 
 #endif // MOUSE

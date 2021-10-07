@@ -49,6 +49,7 @@ set(
     ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
     ${SRC_DIR}/wrapper/lineWrapper.cpp
+    ${SRC_DIR}/wrapper/mouseWrapper.cpp
     ${SRC_DIR}/wrapper/rectangleWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/event.cpp
