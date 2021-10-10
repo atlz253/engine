@@ -54,37 +54,37 @@ extern "C"
         return entity->GetTileW();
     }
 
-    UINT16 GetTileHEntity(Entity *entity)
+    EXPORT UINT16 GetTileHEntity(Entity *entity)
     {
         return entity->GetTileH();
     }
 
-    void SetTileWEntity(Entity *entity, UINT16 w)
+    EXPORT void SetTileWEntity(Entity *entity, UINT16 w)
     {
         entity->SetTileW(w);
     }
 
-    void SetTileHEntity(Entity *entity, UINT16 h)
+    EXPORT void SetTileHEntity(Entity *entity, UINT16 h)
     {
         entity->SetTileH(h);
     }
 
-    INT16 GetTileXEntity(Entity *entity)
+    EXPORT INT16 GetTileXEntity(Entity *entity)
     {
         return entity->GetTileX();
     }
 
-    INT16 GetTileYEntity(Entity *entity)
+    EXPORT INT16 GetTileYEntity(Entity *entity)
     {
         return entity->GetTileY();
     }
 
-    void SetTileXEntity(Entity *entity, INT16 x)
+    EXPORT void SetTileXEntity(Entity *entity, INT16 x)
     {
         entity->SetTileX(x);
     }
 
-    void SetTileYEntity(Entity *entity, INT16 y)
+    EXPORT void SetTileYEntity(Entity *entity, INT16 y)
     {
         entity->SetTileY(y);
     }
