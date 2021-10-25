@@ -1,15 +1,19 @@
 #include "scene.hpp"
 
-struct texture;
-
-class Texture final: Scene
+namespace engn
 {
-private:
-    struct texture *texture;
-public:
-    Texture();
+    struct texture;
 
-    void Render(void) override;
+    class Texture final : IScene
+    {
+    private:
+        struct texture *texture;
 
-    ~Texture();
-};
+    public:
+        Texture();
+
+        void Render(void) override;
+
+        ~Texture();
+    };
+}
