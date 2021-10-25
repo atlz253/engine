@@ -1,3 +1,11 @@
+/*
+  MIT License
+
+  Copyright (c) 2021 Fedor Alekseev
+
+  For more information check LICENSE
+*/
+
 #include "scene.hpp"
 #include "type.hpp"
 

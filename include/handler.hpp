@@ -1,18 +1,31 @@
+/*
+  MIT License
+
+  Copyright (c) 2021 Fedor Alekseev
+
+  For more information check LICENSE
+*/
+
 #include "scene.hpp"
 
-class GameHandler
+namespace engn
 {
-private:
-    Scene *scene;
-    static bool init;
+    class GameHandler
+    {
+    private:
+        Scene *scene;
+        static bool init;
 
-    void Loop(void);
-protected:
-    virtual void Init(void);
-public:
-    GameHandler();
-    
-    virtual void Start(void);
+        void Loop(void);
 
-    ~GameHandler();
-};
+    protected:
+        virtual void Init(void);
+
+    public:
+        GameHandler();
+
+        virtual void Start(void);
+
+        ~GameHandler();
+    };
+}
