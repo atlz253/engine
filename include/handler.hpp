@@ -8,7 +8,7 @@
 
 #include "scene.hpp"
 
-namespace engn
+namespace engn // TODO: SetScene method
 {
     class GameHandler
     {
