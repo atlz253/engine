@@ -45,6 +45,7 @@ set(
     ${SRC_DIR}/objects/rectangle.cpp
     ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
+    ${SRC_DIR}/renderable/rectangle.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
     ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
@@ -52,17 +53,26 @@ set(
     ${SRC_DIR}/wrapper/mouseWrapper.cpp
     ${SRC_DIR}/wrapper/rectangleWrapper.cpp
     ${SRC_DIR}/engine.cpp
+    ${SRC_DIR}/exception.cpp
     ${SRC_DIR}/event.cpp
+    ${SRC_DIR}/handler.cpp
     ${SRC_DIR}/global.cpp
+    ${SRC_DIR}/scene.cpp
 )
 
 set(
     HPP_FILES
+    ${INCLUDE_DIR}/common.hpp
     ${INCLUDE_DIR}/engine.hpp
     ${INCLUDE_DIR}/entity.hpp
     ${INCLUDE_DIR}/event.hpp
+    ${INCLUDE_DIR}/exception.hpp
     ${INCLUDE_DIR}/geometry.hpp
+    ${INCLUDE_DIR}/handler.hpp
     ${INCLUDE_DIR}/interface.hpp
+    ${INCLUDE_DIR}/primitive.hpp
+    ${INCLUDE_DIR}/scene.hpp
+    ${INCLUDE_DIR}/texture.hpp
     ${INCLUDE_DIR}/layer.hpp
     ${INCLUDE_DIR}/type.hpp
     ${SRC_DIR}/objects/textureManager.hpp
@@ -85,4 +95,34 @@ target_link_libraries(
     ${SDL2_LIBRARY}
     ${SDL2_IMAGE_LIBRARIES}
     ${SDL2_TTF_LIBRARIES}
+)
+
+#
+# Testing
+#
+
+enable_testing()
+
+set(TEST_DIR "${PROJECT_SOURCE_DIR}/test")
+
+# ExceptionTest
+add_executable(
+    exceptionTest
+    ${TEST_DIR}/exception.cpp
+)
+
+target_link_libraries(
+    exceptionTest
+    engine
+)
+
+add_test(
+    exception
+    exceptionTest
+)
+
+set_tests_properties(
+    exception PROPERTIES
+    PASS_REGULAR_EXPRESSION "Several objects of the class GameHandler have been initialized"
+    FAIL_REGULAR_EXPRESSION "DoubleInitException not work!"
 )
