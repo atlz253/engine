@@ -17,10 +17,10 @@ namespace engn
     {
     protected:
         virtual void Init(void){};
+        virtual void Destroy(void){};
 
     public:
         virtual void Render(void){};
-        virtual void Destroy(void){};
     };
 
     class Scene : IScene, IMovable, IResizeable, IMouseListener
@@ -28,9 +28,6 @@ namespace engn
     private:
         std::vector<IScene *> *scenes;
         Rect *geometry;
-
-    protected:
-        void Init(void) override;
 
     public:
         Scene(Rect &geometry);
@@ -65,16 +62,13 @@ namespace engn
         MouseButtons DblClick(void) override;
 
         /* SubScenes methods */
-        void Add(IScene *Scene);
+        void Add(IScene *scene);
         void Clear(void);
 
-        /* Process methods */
-        virtual void Process(void);
         virtual void Process(Scene *scene);
 
         void Render(void) override;
 
-        void Destroy(void) override;
         ~Scene();
     };
 }
