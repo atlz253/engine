@@ -6,6 +6,9 @@
   For more information check LICENSE
 */
 
+#ifndef HANDLER
+#define HANDLER
+
 #include "scene.hpp"
 
 namespace engn // TODO: SetScene method
@@ -18,14 +21,17 @@ namespace engn // TODO: SetScene method
 
         void Loop(void);
 
-    protected:
-        virtual void Init(void);
-
     public:
         GameHandler();
 
-        virtual void Start(void);
+        void Init(int w = 1280, int h = 720); // TODO: flags
+
+        void SetScene(Scene *scene);
+
+        void Start(void);
 
         ~GameHandler();
     };
 }
+
+#endif // HANDLER
