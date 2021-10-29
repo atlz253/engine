@@ -31,8 +31,6 @@ typedef struct Point
     INT32 y = 0;
 } Point;
 
-typedef struct SDL_Texture Texture;
-
 typedef struct Color
 {
     UINT8 r = 255;
@@ -50,7 +48,5 @@ typedef enum
     FLIP_HORIZONTAL = 1,
     FLIP_VERTICAL = 2
 } Flip;
-
-typedef struct _TTF_Font Font;
 
 #endif // TYPE
