@@ -39,43 +39,43 @@ public:
     ~Line();
 };
 
-class Rectangle final
-{
-private:
-    Rect *_rect;
-    Color *_color;
+// class Rectangle final
+// {
+// private:
+//     Rect *_rect;
+//     Color *_color;
 
-public:
-    Rectangle(Rect rect, Color color = COLOR_WHITE);
+// public:
+//     Rectangle(Rect rect, Color color = COLOR_WHITE);
 
-    /* Size methods */
+//     /* Size methods */
 
-    void SetW(UINT16 w);
-    void SetH(UINT16 h);
-    void SetSize(UINT16 w, UINT16 h);
+//     void SetW(UINT16 w);
+//     void SetH(UINT16 h);
+//     void SetSize(UINT16 w, UINT16 h);
 
-    UINT16 GetW(void);
-    UINT16 GetH(void);
+//     UINT16 GetW(void);
+//     UINT16 GetH(void);
 
-    /* Position methods */
+//     /* Position methods */
 
-    void SetX(INT16 x);
-    void SetY(INT16 y);
-    void SetPosition(INT16 x, INT16 y);
+//     void SetX(INT16 x);
+//     void SetY(INT16 y);
+//     void SetPosition(INT16 x, INT16 y);
 
-    INT16 GetX(void);
-    INT16 GetY(void);
+//     INT16 GetX(void);
+//     INT16 GetY(void);
 
-    /* Color methods */
+//     /* Color methods */
 
-    void SetColor(Color color);
+//     void SetColor(Color color);
 
-    /* Render methods */
+//     /* Render methods */
 
-    void Render(void);
-    void RenderFill(void);
+//     void Render(void);
+//     void RenderFill(void);
 
-    ~Rectangle();
-};
+//     ~Rectangle();
+// };
 
 #endif // GEOMETRY
