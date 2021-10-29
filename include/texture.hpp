@@ -6,22 +6,45 @@
   For more information check LICENSE
 */
 
+#ifndef TEXTURE
+#define TEXTURE
+
 #include "scene.hpp"
 
 namespace engn
 {
-    struct texture;
-
-    class Texture final : IScene
+    class Texture final : IScene, IMovable, IResizeable
     {
     private:
+        struct texture;
+
         struct texture *texture;
 
     public:
-        Texture();
+        Texture(char *path, Rect geometry);
+
+        /* Position methods */
+        INT16 GetX(void) override;
+        void SetX(INT16 &x) override;
+
+        INT16 GetY(void) override;
+        void SetY(INT16 &y) override;
+
+        void SetPosition(INT16 &x, INT16 &y) override;
+
+        /* Size methods */
+        UINT16 GetWidth(void) override;
+        void SetWidth(UINT16 &w) override;
+
+        UINT16 GetHeight(void) override;
+        void SetHeight(UINT16 &h) override;
+
+        void SetSize(UINT16 &w, UINT16 &h) override;
 
         void Render(void) override;
 
         ~Texture();
     };
 }
+
+#endif // TEXTURE
