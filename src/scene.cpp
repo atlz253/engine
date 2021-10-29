@@ -2,10 +2,8 @@
 
 using namespace engn;
 
-Scene::Scene(Rect &geometry)
-{
-    Init();
-    
+Scene::Scene(Rect geometry)
+{    
     scenes = new std::vector<IScene*>();
 
     this->geometry = new Rect;
@@ -113,7 +111,7 @@ void Scene::Clear(void)
         delete scene;
     
     delete scenes;
-    scenes = new std::vector<IScene*>();
+    scenes = new std::vector<IScene*>(); // TODO: remove
 }
 
 void Scene::Process(Scene *scene)
@@ -123,15 +121,15 @@ void Scene::Process(Scene *scene)
 
 void Scene::Render(void)
 {
-    for (IScene *scene : *scenes)
-        scene->Render();
+    if (scenes)
+        for (IScene *scene : *scenes) // TODO: check scene fill
+            if (scene)
+                scene->Render();
 }
 
 Scene::~Scene()
 {
     Clear();
-
-    Destroy();
 
     delete scenes;
     delete geometry;
