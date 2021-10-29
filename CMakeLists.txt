@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(engine VERSION 150721)
 
+set (CMAKE_CXX_STANDARD 17)
+
 #
 # Libraries check
 #
@@ -36,22 +38,18 @@ include_directories(
 #
 set(
     CPP_FILES
+    ${SRC_DIR}/gui/font.cpp
+    ${SRC_DIR}/gui/text.cpp
     ${SRC_DIR}/input/keyboard.cpp
     ${SRC_DIR}/input/mouse.cpp
-    ${SRC_DIR}/menu/button.cpp
-    ${SRC_DIR}/objects/entity.cpp
-    ${SRC_DIR}/objects/layer.cpp
     ${SRC_DIR}/objects/line.cpp
-    ${SRC_DIR}/objects/rectangle.cpp
-    ${SRC_DIR}/objects/text.cpp
     ${SRC_DIR}/objects/textureManager.cpp
     ${SRC_DIR}/renderable/rectangle.cpp
+    ${SRC_DIR}/renderable/texture.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
-    ${SRC_DIR}/wrapper/entityWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
     ${SRC_DIR}/wrapper/lineWrapper.cpp
     ${SRC_DIR}/wrapper/mouseWrapper.cpp
-    ${SRC_DIR}/wrapper/rectangleWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/exception.cpp
     ${SRC_DIR}/event.cpp
@@ -64,16 +62,14 @@ set(
     HPP_FILES
     ${INCLUDE_DIR}/common.hpp
     ${INCLUDE_DIR}/engine.hpp
-    ${INCLUDE_DIR}/entity.hpp
     ${INCLUDE_DIR}/event.hpp
     ${INCLUDE_DIR}/exception.hpp
     ${INCLUDE_DIR}/geometry.hpp
+    ${INCLUDE_DIR}/gui.hpp
     ${INCLUDE_DIR}/handler.hpp
-    ${INCLUDE_DIR}/interface.hpp
     ${INCLUDE_DIR}/primitive.hpp
     ${INCLUDE_DIR}/scene.hpp
     ${INCLUDE_DIR}/texture.hpp
-    ${INCLUDE_DIR}/layer.hpp
     ${INCLUDE_DIR}/type.hpp
     ${SRC_DIR}/objects/textureManager.hpp
     ${SRC_DIR}/wrapper/wrapper.hpp
@@ -123,6 +119,28 @@ add_test(
 
 set_tests_properties(
     exception PROPERTIES
+    PASS_REGULAR_EXPRESSION "Several objects of the class GameHandler have been initialized"
+    FAIL_REGULAR_EXPRESSION "DoubleInitException not work!"
+)
+
+# SceneTest
+add_executable(
+    sceneTest
+    ${TEST_DIR}/scene.cpp
+)
+
+target_link_libraries(
+    sceneTest
+    engine
+)
+
+add_test(
+    scene
+    sceneTest
+)
+
+set_tests_properties(
+    scene PROPERTIES
     PASS_REGULAR_EXPRESSION "Several objects of the class GameHandler have been initialized"
     FAIL_REGULAR_EXPRESSION "DoubleInitException not work!"
 )
