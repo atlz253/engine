@@ -6,6 +6,9 @@
   For more information check LICENSE
 */
 
+#ifndef EXCEPTION
+#define EXCEPTION
+
 #include <exception>
 
 namespace engn
@@ -19,3 +22,5 @@ namespace engn
     const char *what(void) const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override;
   };
 }
+
+#endif // EXCEPTION

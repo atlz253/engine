@@ -6,6 +6,9 @@
   For more information check LICENSE
 */
 
+#ifndef SCENE
+#define SCENE
+
 #include <vector>
 
 #include "type.hpp"
@@ -15,12 +18,10 @@ namespace engn
 {
     class IScene
     {
-    protected:
-        virtual void Init(void){};
-        virtual void Destroy(void){};
-
     public:
         virtual void Render(void){};
+
+        virtual ~IScene() {}
     };
 
     class Scene : IScene, IMovable, IResizeable, IMouseListener
@@ -30,7 +31,7 @@ namespace engn
         Rect *geometry;
 
     public:
-        Scene(Rect &geometry);
+        Scene(Rect geometry);
 
         /* Position methods */
         INT16 GetX(void) override;
@@ -72,3 +73,5 @@ namespace engn
         ~Scene();
     };
 }
+
+#endif // SCENE
