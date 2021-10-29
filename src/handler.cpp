@@ -8,9 +8,9 @@
 
 using namespace engn;
 
-bool GameHandler::init = false;
+bool Handler::init = false;
 
-GameHandler::GameHandler()
+Handler::Handler()
 {
     if (!init)
         init = true;
@@ -20,23 +20,23 @@ GameHandler::GameHandler()
     scene = nullptr;
 }
 
-void GameHandler::Init(int w, int h) // TODO: remove this method
+void Handler::Init(int w, int h) // TODO: remove this method
 {
     engine::init(w, h);
     events::init();
 }
 
-void GameHandler::Start()
+void Handler::Start()
 {
     Loop();
 }
 
-void GameHandler::SetScene(Scene *scene)
+void Handler::SetScene(Scene *scene)
 {
     this->scene = scene;
 }
 
-void GameHandler::Loop()
+void Handler::Loop()
 {
     while (events::check())
     {
@@ -52,7 +52,7 @@ void GameHandler::Loop()
     }
 }
 
-GameHandler::~GameHandler()
+Handler::~Handler()
 {
     init = false;
 

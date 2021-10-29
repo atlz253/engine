@@ -21,7 +21,7 @@ public:
     ~MainScene() {}
 };
 
-class Main final : public GameHandler
+class Main final : public Handler
 {
 public:
     Main()

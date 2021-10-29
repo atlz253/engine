@@ -119,7 +119,7 @@ add_test(
 
 set_tests_properties(
     exception PROPERTIES
-    PASS_REGULAR_EXPRESSION "Several objects of the class GameHandler have been initialized"
+    PASS_REGULAR_EXPRESSION "Several objects of the class Handler have been initialized"
     FAIL_REGULAR_EXPRESSION "DoubleInitException not work!"
 )
 

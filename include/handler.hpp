@@ -13,7 +13,7 @@
 
 namespace engn // TODO: SetScene method
 {
-    class GameHandler
+    class Handler
     {
     private:
         Scene *scene;
@@ -22,7 +22,7 @@ namespace engn // TODO: SetScene method
         void Loop(void);
 
     public:
-        GameHandler();
+        Handler();
 
         void Init(int w = 1280, int h = 720); // TODO: flags
 
@@ -30,7 +30,7 @@ namespace engn // TODO: SetScene method
 
         void Start(void);
 
-        ~GameHandler();
+        ~Handler();
     };
 }
 

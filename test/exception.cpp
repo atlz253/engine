@@ -10,7 +10,7 @@ int main()
 {
     try
     {
-        GameHandler handler1, handler2;
+        Handler handler1, handler2;
 
         std::cerr << "DoubleInitException not work!" << std::endl;
     }
