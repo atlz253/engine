@@ -6,6 +6,9 @@
   For more information check LICENSE
 */
 
+#ifndef COMMON
+#define COMMON
+
 #include "type.hpp"
 
 namespace engn
@@ -20,6 +23,8 @@ namespace engn
         virtual void SetY(INT16 &y) = 0;
 
         virtual void SetPosition(INT16 &x, INT16 &y) = 0;
+
+        virtual ~IMovable() {}
     };
 
     class IResizeable
@@ -32,6 +37,8 @@ namespace engn
         virtual void SetHeight(UINT16 &h) = 0;
 
         virtual void SetSize(UINT16 &w, UINT16 &h) = 0;
+
+        virtual ~IResizeable() {}
     };
 
     enum MouseButtons
@@ -54,5 +61,9 @@ namespace engn
 
         virtual MouseButtons Click(void) = 0;
         virtual MouseButtons DblClick(void) = 0;
+
+        virtual ~IMouseListener() {}
     };
 }
+
+#endif // COMMON
