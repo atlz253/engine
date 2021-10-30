@@ -21,7 +21,7 @@ private:
 public:
     MainScene(Scene *scene, Rect geometry) : Scene(scene, geometry)
     {
-        Font *font = new Font("font.ttf", 36);
+        Font *font = new Font("../res/test/roboto/Roboto-Regular.ttf", 36);
 
         Add(new Rectangle({0, 0, 800, 800}, {254, 214, 188, 255}, true));
         Add(new Text(font, "1", {0, 0}, {0, 0, 0, 255}));
