@@ -1,10 +1,16 @@
 #include "scene.hpp"
 
+#include <iostream>
+
+#include "SDL.h"
+#include "global.hpp"
+
 using namespace engn;
 
-Scene::Scene(Rect geometry)
-{    
-    scenes = new std::vector<IScene*>();
+Scene::Scene(Scene *scene, Rect geometry)
+{
+    parent = scene;
+    scenes = nullptr;
 
     this->geometry = new Rect;
     this->geometry->h = geometry.h;
@@ -102,35 +108,54 @@ MouseButtons Scene::DblClick(void)
 
 void Scene::Add(IScene *scene)
 {
+    if (!scenes)
+        scenes = new std::vector<IScene *>();
+
     scenes->push_back(scene);
 }
 
 void Scene::Clear(void)
 {
-    for (IScene *scene : *scenes)
-        delete scene;
-    
-    delete scenes;
-    scenes = new std::vector<IScene*>(); // TODO: remove
+    if (scenes)
+    {
+        for (IScene *scene : *scenes)
+            delete scene;
+
+        delete scenes;
+        scenes = nullptr;
+    }
 }
 
-void Scene::Process(Scene *scene)
+void Scene::Process(void)
 {
-
 }
 
 void Scene::Render(void)
 {
+    SDL_Rect *rect = nullptr;
+
+    if (parent)
+    {
+        rect = new SDL_Rect;
+        rect->h = geometry->h;
+        rect->w = geometry->w;
+        rect->x = geometry->x + parent->GetX();
+        rect->y = geometry->y + parent->GetY();
+    }
+
+    SDL_RenderSetViewport(global::renderer, rect);
+
     if (scenes)
-        for (IScene *scene : *scenes) // TODO: check scene fill
+        for (IScene *scene : *scenes)
             if (scene)
                 scene->Render();
+
+    delete rect;
 }
 
 Scene::~Scene()
 {
     Clear();
 
-    delete scenes;
     delete geometry;
 }

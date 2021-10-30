@@ -44,7 +44,7 @@ void Handler::Loop()
         {
             render::clear();
 
-            scene->Process(scene);
+            scene->Process();
             scene->Render();
 
             render::present();

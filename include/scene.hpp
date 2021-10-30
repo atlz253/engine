@@ -24,14 +24,15 @@ namespace engn
         virtual ~IScene() {}
     };
 
-    class Scene : IScene, IMovable, IResizeable, IMouseListener
+    class Scene : public IScene, IMovable, IResizeable, IMouseListener
     {
     private:
-        std::vector<IScene *> *scenes;
+        Scene *parent;
         Rect *geometry;
+        std::vector<IScene *> *scenes;
 
     public:
-        Scene(Rect geometry);
+        Scene(Scene *scene, Rect geometry);
 
         /* Position methods */
         INT16 GetX(void) override;
@@ -66,9 +67,9 @@ namespace engn
         void Add(IScene *scene);
         void Clear(void);
 
-        virtual void Process(Scene *scene);
+        virtual void Process(void);
 
-        void Render(void) override;
+        void Render(void) final;
 
         ~Scene();
     };
