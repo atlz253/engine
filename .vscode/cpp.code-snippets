@@ -3,7 +3,7 @@
 		"scope": "cpp",
 		"prefix": "Handler",
 		"body": [
-			"class ${1:Main} final : public Handler",
+			"class ${1:Main} final : public engn::Handler",
 			"{",
 			"private:",
 			"public:",
@@ -20,11 +20,11 @@
 		"scope": "cpp",
 		"prefix": "Scene",
 		"body": [
-			"class ${1:CustomScene} final : public Scene",
+			"class ${1:CustomScene} final : public engn::Scene",
 			"{",
 			"private:",
 			"public:",
-			"\t${1:CustomScene}(Scene *scene, Rect geometry) : Scene(scene, geometry)",
+			"\t${1:CustomScene}(Scene *scene, Rect geometry) : engn::Scene(scene, geometry)",
 			"\t{",
 			"\t\t$2",
 			"\t}",
