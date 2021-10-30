@@ -96,7 +96,6 @@ void Texture::Render(void)
 
 Texture::~Texture()
 {
-    delete texture->path;
     delete texture->flip;
     delete texture->geometry;
     delete texture;
