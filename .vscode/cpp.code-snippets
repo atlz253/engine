@@ -5,6 +5,7 @@
 		"body": [
 			"class ${1:Main} final : public Handler",
 			"{",
+			"private:",
 			"public:",
 			"\t${1:Main}()",
 			"\t{",
@@ -13,5 +14,22 @@
 			"};"
 		],
 		"description": "Handler class"
+	},
+
+	"Scene": {
+		"scope": "cpp",
+		"prefix": "Scene",
+		"body": [
+			"class ${1:CustomScene} final : public Scene",
+			"{",
+			"private:",
+			"public:",
+			"\t${1:CustomScene}(Scene *scene, Rect geometry) : Scene(scene, geometry)",
+			"\t{",
+			"\t\t$2",
+			"\t}",
+			"};"
+		],
+		"description": "Scene class"
 	}
 }
