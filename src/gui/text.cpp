@@ -89,7 +89,7 @@ void Text::Render(void)
     SDL_Surface *surf = TTF_RenderUTF8_Blended(font->font->font, text, {color->r, color->g, color->b, color->a});
     if (!surf)
     {
-        std::cout << "Failed to convert text to surface" << TTF_GetError() << std::endl;
+        std::cerr << "Failed to convert text to surface: " << TTF_GetError() << std::endl;
         return;
     }
 
@@ -97,14 +97,14 @@ void Text::Render(void)
     SDL_FreeSurface(surf);
     if (!texture)
     {
-        std::cout << "Failed to convert text surface to texture" << SDL_GetError() << std::endl;
+        std::cerr << "Failed to convert text surface to texture: " << SDL_GetError() << std::endl;
         return;
     }
 
     int w, h;
     if (TTF_SizeUTF8(font->font->font, text, &w, &h))
     {
-        std::cout << "Failed to get text size: " << TTF_GetError() << std::endl;
+        std::cerr << "Failed to get text size: " << TTF_GetError() << std::endl;
         return;
     }
 
@@ -125,8 +125,6 @@ void Text::Render(void)
 
 Text::~Text()
 {
-    delete font;
     delete color;
-    delete text;
     delete geometry;
 }
