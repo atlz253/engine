@@ -141,6 +141,6 @@ add_test(
 
 set_tests_properties(
     scene PROPERTIES
-    PASS_REGULAR_EXPRESSION "Several objects of the class GameHandler have been initialized"
-    FAIL_REGULAR_EXPRESSION "DoubleInitException not work!"
+    TIMEOUT 10
+    PASS_REGULAR_EXPRESSION "Scenes succesfully rendered!"
 )
