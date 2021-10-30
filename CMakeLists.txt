@@ -144,3 +144,25 @@ set_tests_properties(
     TIMEOUT 10
     PASS_REGULAR_EXPRESSION "Scenes succesfully rendered!"
 )
+
+# TextureTest
+add_executable(
+    textureTest
+    ${TEST_DIR}/texture.cpp
+)
+
+target_link_libraries(
+    textureTest
+    engine
+)
+
+add_test(
+    texture
+    textureTest
+)
+
+set_tests_properties(
+    texture PROPERTIES
+    TIMEOUT 60
+    PASS_REGULAR_EXPRESSION "success!"
+)
