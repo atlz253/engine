@@ -75,6 +75,7 @@ _deps
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/c_cpp_properties.json
+!.vscode/cpp.code-snippets
 *.code-workspace
 
 # Local History for Visual Studio Code

@@ -1,0 +1,17 @@
+{
+	"Handler": {
+		"scope": "cpp",
+		"prefix": "Handler",
+		"body": [
+			"class ${1:Main} final : public Handler",
+			"{",
+			"public:",
+			"\t${1:Main}()",
+			"\t{",
+			"\t\t$2",
+			"\t}",
+			"};"
+		],
+		"description": "Handler class"
+	}
+}
