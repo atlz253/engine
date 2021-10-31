@@ -2,6 +2,8 @@
 
 #include "SDL.h"
 
+using namespace engn;
+
 namespace mouse
 {
     Point Position(void)

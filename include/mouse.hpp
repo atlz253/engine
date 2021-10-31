@@ -13,7 +13,7 @@
 
 namespace mouse
 {
-    Point Position(void);
+    engn::Point Position(void);
 
     bool LeftClick(void);
 }

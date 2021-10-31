@@ -2,6 +2,8 @@
 
 #include "mouse.hpp"
 
+using namespace engn;
+
 extern "C"
 {
     Point MousePosition(void)
