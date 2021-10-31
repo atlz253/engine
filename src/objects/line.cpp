@@ -5,7 +5,9 @@
 
 #include <iostream>
 
-Line::Line(Point start, Point end, Color color)
+using namespace engn;
+
+Line::Line(Point start, Point end, Color color) // TODO: remove line.cpp
 {
     _start = new Point;
     SetStart(start);

@@ -42,13 +42,11 @@ set(
     ${SRC_DIR}/gui/text.cpp
     ${SRC_DIR}/input/keyboard.cpp
     ${SRC_DIR}/input/mouse.cpp
-    ${SRC_DIR}/objects/line.cpp
     ${SRC_DIR}/objects/textureManager.cpp
     ${SRC_DIR}/renderable/rectangle.cpp
     ${SRC_DIR}/renderable/texture.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
-    ${SRC_DIR}/wrapper/lineWrapper.cpp
     ${SRC_DIR}/wrapper/mouseWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/exception.cpp
