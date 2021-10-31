@@ -11,7 +11,7 @@
 
 #include "scene.hpp"
 
-namespace engn // TODO: SetScene method
+namespace engn
 {
     class Handler
     {
