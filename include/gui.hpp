@@ -1,5 +1,7 @@
 #include "scene.hpp"
 
+#include <string>
+
 namespace engn
 {
     class Font final // TODO: setSize
@@ -10,7 +12,7 @@ namespace engn
         struct font *font;
 
     public:
-        Font(char *path, int size = 20);
+        Font(std::string path, int size = 20);
 
         friend class Text;
 
@@ -19,18 +21,17 @@ namespace engn
 
     class Text final : public IScene, IMovable
     {
-    private: // TODO: struct text
-        Font *font;
-        Color *color;
-        char *text;
-        Rect *geometry;
+    private:
+        struct text;
+
+        struct text *text;
 
     public:
-        Text(Font *font, char *text, Point position = {0, 0}, Color color = {255, 255, 255, 255});
+        Text(Font *font, std::string text, Point position = {0, 0}, Color color = {255, 255, 255, 255});
 
         /* Text methods */
-        char *GetText(void);
-        void SetText(char *text);
+        std::string GetText(void);
+        void SetText(std::string text);
 
         UINT16 GetWidth(void);
         UINT16 GetHeight(void);

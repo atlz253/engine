@@ -17,13 +17,13 @@ struct flip
 
 struct Texture::texture
 {
-    char *path;
+    std::string path;
     SDL_Texture *texture;
     struct flip *flip = nullptr;
     SDL_Rect *geometry;
 };
 
-Texture::Texture(char *path, Rect geometry)
+Texture::Texture(std::string path, Rect geometry)
 {
     texture = new struct texture;
     texture->path = path;

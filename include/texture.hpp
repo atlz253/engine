@@ -11,6 +11,8 @@
 
 #include "scene.hpp"
 
+#include <string>
+
 namespace engn
 {
     class Texture final : public IScene, IMovable, IResizeable
@@ -21,7 +23,7 @@ namespace engn
         struct texture *texture;
 
     public:
-        Texture(char *path, Rect geometry);
+        Texture(std::string path, Rect geometry);
 
         /* Position methods */
         INT16 GetX(void) override;
