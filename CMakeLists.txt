@@ -59,8 +59,6 @@ set(
 set(
     HPP_FILES
     ${INCLUDE_DIR}/common.hpp
-    ${INCLUDE_DIR}/engine.hpp
-    ${INCLUDE_DIR}/event.hpp
     ${INCLUDE_DIR}/exception.hpp
     ${INCLUDE_DIR}/geometry.hpp
     ${INCLUDE_DIR}/gui.hpp
@@ -71,6 +69,8 @@ set(
     ${INCLUDE_DIR}/type.hpp
     ${SRC_DIR}/objects/textureManager.hpp
     ${SRC_DIR}/wrapper/wrapper.hpp
+    ${SRC_DIR}/engine.hpp
+    ${SRC_DIR}/event.hpp
     ${SRC_DIR}/global.hpp
 )
 
@@ -161,6 +161,28 @@ add_test(
 
 set_tests_properties(
     texture PROPERTIES
+    TIMEOUT 60
+    PASS_REGULAR_EXPRESSION "success!"
+)
+
+# TilingTest
+add_executable(
+    tilingTest
+    ${TEST_DIR}/tiling.cpp
+)
+
+target_link_libraries(
+    tilingTest
+    engine
+)
+
+add_test(
+    tiling
+    tilingTest
+)
+
+set_tests_properties(
+    tiling PROPERTIES
     TIMEOUT 60
     PASS_REGULAR_EXPRESSION "success!"
 )
