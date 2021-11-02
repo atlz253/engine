@@ -54,6 +54,7 @@ set(
     ${SRC_DIR}/handler.cpp
     ${SRC_DIR}/global.cpp
     ${SRC_DIR}/scene.cpp
+    ${SRC_DIR}/time.cpp
 )
 
 set(
@@ -65,6 +66,7 @@ set(
     ${INCLUDE_DIR}/handler.hpp
     ${INCLUDE_DIR}/primitive.hpp
     ${INCLUDE_DIR}/scene.hpp
+    ${INCLUDE_DIR}/time.hpp
     ${INCLUDE_DIR}/texture.hpp
     ${INCLUDE_DIR}/type.hpp
     ${SRC_DIR}/objects/textureManager.hpp
