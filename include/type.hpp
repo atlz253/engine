@@ -11,14 +11,15 @@
 
 #include <cstdint>
 
-namespace engn
-{
 #define INT16 std::int16_t
 #define INT32 std::int32_t
 
 #define UINT8 std::uint8_t
 #define UINT16 std::uint16_t
+#define UINT32 std::uint32_t
 
+namespace engn
+{
     typedef struct Rect
     {
         INT16 x = 0;
@@ -42,7 +43,7 @@ namespace engn
     } Color;
 
 #define COLOR_WHITE {(UINT8)255, (UINT8)255, (UINT8)255, (UINT8)255}
-#define COLOR_BLACK {(UINT8)0, (UINT8)0, (UINT8)0, (UINT8)0}
+#define COLOR_BLACK {(UINT8)0, (UINT8)0, (UINT8)0, (UINT8)255}
 
     typedef enum
     {
