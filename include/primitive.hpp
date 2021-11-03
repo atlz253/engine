@@ -17,7 +17,7 @@ namespace engn
     class Rectangle final : public IScene, IMovable, IResizeable
     {
     private:
-        Rect *rect;
+        Rect *rect; // TODO: struct rectangle
         Color *color;
         bool fill;
 
@@ -51,15 +51,20 @@ namespace engn
         ~Rectangle();
     };
 
-    class Line final : IScene
+    class Line final : public IScene
     {
     private:
-        Point *start;
-        Point *end;
-        Color *color;
+        struct line;
+
+        struct line *data;
 
     public:
-        Line(Point &start, Point &end);
+        Line(Point start, Point end, Color color = COLOR_BLACK);
+
+        void SetStart(Point start);
+        void SetEnd(Point end);
+
+        void SetColor(Color color);
 
         void Render(void) override;
 
