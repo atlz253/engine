@@ -30,7 +30,7 @@ set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 include_directories(
     "${INCLUDE_DIR}"
     "${SRC_DIR}"
-    "${SRC_DIR}/objects"
+    "${SRC_DIR}/manager"
 )
 
 #
@@ -42,7 +42,8 @@ set(
     ${SRC_DIR}/gui/text.cpp
     ${SRC_DIR}/input/keyboard.cpp
     ${SRC_DIR}/input/mouse.cpp
-    ${SRC_DIR}/objects/textureManager.cpp
+    ${SRC_DIR}/manager/textureManager.cpp
+    ${SRC_DIR}/renderable/line.cpp
     ${SRC_DIR}/renderable/rectangle.cpp
     ${SRC_DIR}/renderable/texture.cpp
     ${SRC_DIR}/wrapper/engineWrapper.cpp
@@ -61,7 +62,6 @@ set(
     HPP_FILES
     ${INCLUDE_DIR}/common.hpp
     ${INCLUDE_DIR}/exception.hpp
-    ${INCLUDE_DIR}/geometry.hpp
     ${INCLUDE_DIR}/gui.hpp
     ${INCLUDE_DIR}/handler.hpp
     ${INCLUDE_DIR}/primitive.hpp
@@ -69,7 +69,7 @@ set(
     ${INCLUDE_DIR}/time.hpp
     ${INCLUDE_DIR}/texture.hpp
     ${INCLUDE_DIR}/type.hpp
-    ${SRC_DIR}/objects/textureManager.hpp
+    ${SRC_DIR}/manager/textureManager.hpp
     ${SRC_DIR}/wrapper/wrapper.hpp
     ${SRC_DIR}/engine.hpp
     ${SRC_DIR}/event.hpp

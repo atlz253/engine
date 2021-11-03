@@ -9,7 +9,7 @@ namespace textures
 {
     int init();
 
-    SDL_Texture *&get(std::string path);
+    SDL_Texture *&get(std::string path); // TODO: smart pointers
 
     void clear(std::string path);
 
