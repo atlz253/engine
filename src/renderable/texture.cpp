@@ -19,70 +19,96 @@ struct Texture::texture
 {
     std::string path;
     SDL_Texture *texture;
-    struct flip *flip = nullptr;
+    struct flip *flip; // TODO: flip
     SDL_Rect *geometry;
+    SDL_Rect *tile;
 };
 
 Texture::Texture(std::string path, Rect geometry)
 {
-    texture = new struct texture;
-    texture->path = path;
-    texture->texture = textures::get(path);
+    data = new struct texture;
+    data->path = path;
+    data->texture = textures::get(path);
 
-    texture->geometry = new SDL_Rect;
-    texture->geometry->w = geometry.w;
-    texture->geometry->h = geometry.h;
-    texture->geometry->x = geometry.x;
-    texture->geometry->y = geometry.y;
+    data->tile = nullptr;
+    data->flip = nullptr;
+
+    data->geometry = new SDL_Rect;
+    this->SetPosition(geometry.x, geometry.y);
+    this->SetSize(geometry.w, geometry.h);
+}
+
+Texture::Texture(std::string path, Rect geometry, Rect tile) : Texture::Texture(path, geometry)
+{
+    this->SetTile(tile);
 }
 
 INT16 Texture::GetX(void)
 {
-    return texture->geometry->x;
+    return data->geometry->x;
 }
 
-void Texture::SetX(INT16 &x)
+void Texture::SetX(INT16 x)
 {
-    texture->geometry->x = x;
+    data->geometry->x = x;
 }
 
 INT16 Texture::GetY(void)
 {
-    return texture->geometry->y;
+    return data->geometry->y;
 }
 
-void Texture::SetY(INT16 &y)
+void Texture::SetY(INT16 y)
 {
-    texture->geometry->y = y;
+    data->geometry->y = y;
 }
 
-void Texture::SetPosition(INT16 &x, INT16 &y)
+void Texture::SetPosition(INT16 x, INT16 y)
 {
     SetX(x);
     SetY(y);
 }
 
-UINT16 Texture::GetWidth(void)
+void Texture::ClearTile(void)
 {
-    return texture->geometry->w;
+    if (data->tile)
+        delete data->tile;
+
+    data->tile = nullptr;
 }
 
-void Texture::SetWidth(UINT16 &w)
+void Texture::SetTile(Rect tile)
 {
-    texture->geometry->w = w;
+    if (!data->tile)
+        data->tile = new SDL_Rect;
+
+    data->tile->h = tile.h;
+    data->tile->w = tile.w;
+    data->tile->x = tile.x;
+    data->tile->y = tile.y;
+}
+
+UINT16 Texture::GetWidth(void)
+{
+    return data->geometry->w;
+}
+
+void Texture::SetWidth(UINT16 w)
+{
+    data->geometry->w = w;
 }
 
 UINT16 Texture::GetHeight(void)
 {
-    return texture->geometry->h;
+    return data->geometry->h;
 }
 
-void Texture::SetHeight(UINT16 &h)
+void Texture::SetHeight(UINT16 h)
 {
-    texture->geometry->h = h;
+    data->geometry->h = h;
 }
 
-void Texture::SetSize(UINT16 &w, UINT16 &h)
+void Texture::SetSize(UINT16 w, UINT16 h)
 {
     SetWidth(w);
     SetHeight(h);
@@ -90,13 +116,21 @@ void Texture::SetSize(UINT16 &w, UINT16 &h)
 
 void Texture::Render(void)
 {
-    if (SDL_RenderCopy(global::renderer, texture->texture, nullptr, texture->geometry))
-        std::cerr << "Texture: render error" << SDL_GetError() << std::endl;
+    SDL_Rect *dst = new SDL_Rect;
+    dst->h = data->geometry->h;
+    dst->w = data->geometry->w;
+    dst->x = data->geometry->x;
+    dst->y = data->geometry->y;
+
+    if (SDL_RenderCopy(global::renderer, data->texture, data->tile, dst))
+        std::cerr << "Texture render error: " << SDL_GetError() << std::endl;
+    
+    delete dst;
 }
 
 Texture::~Texture()
 {
-    delete texture->flip;
-    delete texture->geometry;
-    delete texture;
+    delete data->flip;
+    delete data->geometry;
+    delete data;
 }
