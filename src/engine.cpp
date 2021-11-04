@@ -14,7 +14,7 @@ namespace engine
     bool init(INT32 w, INT32 h)
     {
         std::cout << "SdlSubSystem: SDL2 initialization" << std::endl;
-        if (SDL_Init(SDL_INIT_VIDEO))
+        if (SDL_Init(SDL_INIT_VIDEO |  SDL_INIT_TIMER))
         {
             std::cout << "SDL2 initialization error:" << SDL_GetError() << std::endl;
             exit(EXIT_FAILURE);
