@@ -26,25 +26,25 @@ namespace engn
 
         /* Chord methods */
         INT16 GetX(void) override;
-        void SetX(INT16 &x) override;
+        void SetX(INT16 x) override;
 
         INT16 GetY(void) override;
-        void SetY(INT16 &y) override;
+        void SetY(INT16 y) override;
 
-        void SetPosition(INT16 &x, INT16 &y) override;
+        void SetPosition(INT16 x, INT16 y) override;
 
         /* Position methods */
         UINT16 GetWidth(void) override;
-        void SetWidth(UINT16 &w) override;
+        void SetWidth(UINT16 w) override;
 
         UINT16 GetHeight(void) override;
-        void SetHeight(UINT16 &h) override;
+        void SetHeight(UINT16 h) override;
 
-        void SetSize(UINT16 &w, UINT16 &h) override;
+        void SetSize(UINT16 w, UINT16 h) override;
 
         void SetColor(Color color);
         
-        void SetFill(bool &fill);
+        void SetFill(bool fill);
 
         void Render(void) override;
 

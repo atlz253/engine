@@ -17,12 +17,12 @@ namespace engn
     {
     public:
         virtual INT16 GetX(void) = 0;
-        virtual void SetX(INT16 &x) = 0;
+        virtual void SetX(INT16 x) = 0;
 
         virtual INT16 GetY(void) = 0;
-        virtual void SetY(INT16 &y) = 0;
+        virtual void SetY(INT16 y) = 0;
 
-        virtual void SetPosition(INT16 &x, INT16 &y) = 0;
+        virtual void SetPosition(INT16 x, INT16 y) = 0;
 
         virtual ~IMovable() {}
     };
@@ -31,12 +31,12 @@ namespace engn
     {
     public:
         virtual UINT16 GetWidth(void) = 0;
-        virtual void SetWidth(UINT16 &w) = 0;
+        virtual void SetWidth(UINT16 w) = 0;
 
         virtual UINT16 GetHeight(void) = 0;
-        virtual void SetHeight(UINT16 &h) = 0;
+        virtual void SetHeight(UINT16 h) = 0;
 
-        virtual void SetSize(UINT16 &w, UINT16 &h) = 0;
+        virtual void SetSize(UINT16 w, UINT16 h) = 0;
 
         virtual ~IResizeable() {}
     };

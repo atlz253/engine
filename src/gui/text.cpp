@@ -68,7 +68,7 @@ INT16 Text::GetX(void)
     return text->geometry->x;
 }
 
-void Text::SetX(INT16 &x)
+void Text::SetX(INT16 x)
 {
     text->geometry->x = x;
 }
@@ -78,12 +78,12 @@ INT16 Text::GetY(void)
     return text->geometry->y;
 }
 
-void Text::SetY(INT16 &y)
+void Text::SetY(INT16 y)
 {
     text->geometry->y = y;
 }
 
-void Text::SetPosition(INT16 &x, INT16 &y)
+void Text::SetPosition(INT16 x, INT16 y)
 {
     SetX(x);
     SetY(y);

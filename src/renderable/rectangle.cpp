@@ -28,7 +28,7 @@ INT16 Rectangle::GetX(void)
     return rect->x;
 }
 
-void Rectangle::SetX(INT16 &x)
+void Rectangle::SetX(INT16 x)
 {
     rect->x = x;
 }
@@ -38,12 +38,12 @@ INT16 Rectangle::GetY(void)
     return rect->y;
 }
 
-void Rectangle::SetY(INT16 &y)
+void Rectangle::SetY(INT16 y)
 {
     rect->y = y;
 }
 
-void Rectangle::SetPosition(INT16 &x, INT16 &y)
+void Rectangle::SetPosition(INT16 x, INT16 y)
 {
     SetX(x);
     SetY(y);
@@ -54,7 +54,7 @@ UINT16 Rectangle::GetWidth(void)
     return rect->w;
 }
 
-void Rectangle::SetWidth(UINT16 &w)
+void Rectangle::SetWidth(UINT16 w)
 {
     rect->w = w;
 }
@@ -64,12 +64,12 @@ UINT16 Rectangle::GetHeight(void)
     return rect->h;
 }
 
-void Rectangle::SetHeight(UINT16 &h)
+void Rectangle::SetHeight(UINT16 h)
 {
     rect->h = h;
 }
 
-void Rectangle::SetSize(UINT16 &w, UINT16 &h)
+void Rectangle::SetSize(UINT16 w, UINT16 h)
 {
     SetWidth(w);
     SetHeight(h);
@@ -83,7 +83,7 @@ void Rectangle::SetColor(Color color)
     this->color->b = color.b;
 }
 
-void Rectangle::SetFill(bool &fill)
+void Rectangle::SetFill(bool fill)
 {
     this->fill = fill;
 }
