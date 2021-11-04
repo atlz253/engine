@@ -16,26 +16,8 @@ private:
     Texture *far[2], *back[2], *fore[2];
     int farFrame = 0, backFrame = 0, foreFrame = 0;
 
-public:
-    MainScene(Scene *scene, Rect geometry) : engn::Scene(scene, geometry)
-    {
-        far[0] = new Texture("../res/test/texture/cyberpunk-street/far-buildings.png", {-1075, 0, 1075, 800});
-        far[1] = new Texture("../res/test/texture/cyberpunk-street/far-buildings.png", {0, 0, 1075, 800});
-        Add(far[0]);
-        Add(far[1]);
-
-        back[0] = new Texture("../res/test/texture/cyberpunk-street/back-buildings.png", {-1075, 0, 1075, 800});
-        back[1] = new Texture("../res/test/texture/cyberpunk-street/back-buildings.png", {0, 0, 1075, 800});
-        Add(back[0]);
-        Add(back[1]);
-
-        fore[0] = new Texture("../res/test/texture/cyberpunk-street/foreground.png", {-1480, 0, 1480, 800});
-        fore[1] = new Texture("../res/test/texture/cyberpunk-street/foreground.png", {0, 0, 1480, 800});
-        Add(fore[0]);
-        Add(fore[1]);
-    }
-
-    void Process() override
+protected:
+    void Action() override
     {
         if (farFrame == 3)
         {
@@ -110,6 +92,25 @@ public:
         {
             foreFrame++;
         }
+    }
+
+public:
+    MainScene(Scene *scene, Rect geometry) : engn::Scene(scene, geometry)
+    {
+        far[0] = new Texture("../res/test/texture/cyberpunk-street/far-buildings.png", {-1075, 0, 1075, 800});
+        far[1] = new Texture("../res/test/texture/cyberpunk-street/far-buildings.png", {0, 0, 1075, 800});
+        Add(far[0]);
+        Add(far[1]);
+
+        back[0] = new Texture("../res/test/texture/cyberpunk-street/back-buildings.png", {-1075, 0, 1075, 800});
+        back[1] = new Texture("../res/test/texture/cyberpunk-street/back-buildings.png", {0, 0, 1075, 800});
+        Add(back[0]);
+        Add(back[1]);
+
+        fore[0] = new Texture("../res/test/texture/cyberpunk-street/foreground.png", {-1480, 0, 1480, 800});
+        fore[1] = new Texture("../res/test/texture/cyberpunk-street/foreground.png", {0, 0, 1480, 800});
+        Add(fore[0]);
+        Add(fore[1]);
     }
 };
 
