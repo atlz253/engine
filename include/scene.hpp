@@ -9,14 +9,12 @@
 #ifndef SCENE
 #define SCENE
 
-#include <vector>
-
 #include "type.hpp"
 #include "common.hpp"
 
 namespace engn
 {
-    class IScene
+    class IScene // TODO: IRenderable?
     {
     public:
         virtual void Render(void){};
@@ -27,30 +25,34 @@ namespace engn
     class Scene : public IScene, IMovable, IResizeable, IMouseListener
     {
     private:
+        struct scene;
+        struct scene *data;
+
+    protected:
         Scene *parent;
-        Rect *geometry;
-        std::vector<IScene *> *scenes;
+        
+        virtual void Action(void);
 
     public:
-        Scene(Scene *scene, Rect geometry);
+        Scene(Scene *parent, Rect geometry);
 
         /* Position methods */
         INT16 GetX(void) override;
-        void SetX(INT16 &x) override;
+        void SetX(INT16 x) override;
 
         INT16 GetY(void) override;
-        void SetY(INT16 &y) override;
+        void SetY(INT16 y) override;
 
-        void SetPosition(INT16 &x, INT16 &y) override;
+        void SetPosition(INT16 x, INT16 y) override;
 
         /* Size methods */
         UINT16 GetWidth(void) override;
-        void SetWidth(UINT16 &w) override;
+        void SetWidth(UINT16 w) override;
 
         UINT16 GetHeight(void) override;
-        void SetHeight(UINT16 &h) override;
+        void SetHeight(UINT16 h) override;
 
-        void SetSize(UINT16 &w, UINT16 &h) override;
+        void SetSize(UINT16 w, UINT16 h) override;
 
         /* Mouse methods */
         MouseButtons MouseDown(void) override;
@@ -67,7 +69,11 @@ namespace engn
         void Add(IScene *scene);
         void Clear(void);
 
-        virtual void Process(void);
+        /* Grid methods */ // TODO: grid
+        void GridHighlight(void);
+        void SetGrid(UINT8 size);
+
+        void Process(void);
 
         void Render(void) final;
 

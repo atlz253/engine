@@ -1,45 +1,64 @@
 #include "scene.hpp"
 
+#include <list>
 #include <iostream>
 
 #include "SDL.h"
 #include "global.hpp"
+#include "primitive.hpp"
 
 using namespace engn;
 
-Scene::Scene(Scene *scene, Rect geometry)
+struct Scene::scene
 {
-    parent = scene;
-    scenes = nullptr;
+    SDL_Rect *geometry;
+    std::list<IScene *> *scenes;
 
-    this->geometry = new Rect;
-    this->geometry->h = geometry.h;
-    this->geometry->w = geometry.w;
-    this->geometry->x = geometry.x;
-    this->geometry->y = geometry.y;
+    UINT8 cellSize; // TODO gridW, gridH
+    bool highlight;
+};
+
+void Scene::Action(void)
+{
+    // Do nothing
+}
+
+Scene::Scene(Scene *parent, Rect geometry)
+{
+    this->parent = parent;
+    
+    data = new struct scene;
+    data->scenes = nullptr;
+
+    data->cellSize = 1;
+    data->highlight = false;
+
+    data->geometry = new SDL_Rect;
+    SetPosition(geometry.x, geometry.y);
+    SetSize(geometry.w, geometry.h);
 }
 
 INT16 Scene::GetX(void)
 {
-    return geometry->x;
+    return data->geometry->x;
 }
 
-void Scene::SetX(INT16 &x)
+void Scene::SetX(INT16 x)
 {
-    geometry->x = x;
+    data->geometry->x = x;
 }
 
 INT16 Scene::GetY(void)
 {
-    return geometry->y;
+    return data->geometry->y;
 }
 
-void Scene::SetY(INT16 &y)
+void Scene::SetY(INT16 y)
 {
-    geometry->y = y;
+    data->geometry->y = y;
 }
 
-void Scene::SetPosition(INT16 &x, INT16 &y)
+void Scene::SetPosition(INT16 x, INT16 y)
 {
     SetX(x);
     SetY(y);
@@ -47,25 +66,25 @@ void Scene::SetPosition(INT16 &x, INT16 &y)
 
 UINT16 Scene::GetWidth(void)
 {
-    return geometry->w;
+    return data->geometry->w;
 }
 
-void Scene::SetWidth(UINT16 &w)
+void Scene::SetWidth(UINT16 w)
 {
-    geometry->w = w;
+    data->geometry->w = w;
 }
 
 UINT16 Scene::GetHeight(void)
 {
-    return geometry->h;
+    return data->geometry->h;
 }
 
-void Scene::SetHeight(UINT16 &h)
+void Scene::SetHeight(UINT16 h)
 {
-    geometry->h = h;
+    data->geometry->h = h;
 }
 
-void Scene::SetSize(UINT16 &w, UINT16 &h)
+void Scene::SetSize(UINT16 w, UINT16 h)
 {
     SetWidth(w);
     SetHeight(h);
@@ -108,26 +127,46 @@ MouseButtons Scene::DblClick(void)
 
 void Scene::Add(IScene *scene)
 {
-    if (!scenes)
-        scenes = new std::vector<IScene *>();
+    if (!data->scenes)
+        data->scenes = new std::list<IScene *>();
 
-    scenes->push_back(scene);
+    data->scenes->push_back(scene);
 }
 
 void Scene::Clear(void)
 {
-    if (scenes)
+    if (data->scenes)
     {
-        for (IScene *scene : *scenes)
+        for (IScene *scene : *data->scenes)
             delete scene;
 
-        delete scenes;
-        scenes = nullptr;
+        delete data->scenes;
+        data->scenes = nullptr;
     }
+}
+
+void Scene::GridHighlight(void)
+{
+    data->highlight = true;
+}
+
+void Scene::SetGrid(UINT8 size)
+{
+    data->cellSize = size;
 }
 
 void Scene::Process(void)
 {
+    if (data->scenes)
+        for (IScene *scene : *data->scenes)
+        {
+            Scene *s = dynamic_cast<Scene *>(scene); // FIXME: This is not good
+
+            if (s)
+                s->Process();
+        }
+
+    Action();
 }
 
 void Scene::Render(void)
@@ -137,18 +176,49 @@ void Scene::Render(void)
     if (parent)
     {
         rect = new SDL_Rect;
-        rect->h = geometry->h;
-        rect->w = geometry->w;
-        rect->x = geometry->x + parent->GetX();
-        rect->y = geometry->y + parent->GetY();
+        rect->h = data->geometry->h;
+        rect->w = data->geometry->w;
+        rect->x = (data->geometry->x + parent->GetX());
+        rect->y = (data->geometry->y + parent->GetY());
     }
 
-    SDL_RenderSetViewport(global::renderer, rect);
-
-    if (scenes)
-        for (IScene *scene : *scenes)
+    if (data->scenes)
+        for (IScene *scene : *data->scenes)
             if (scene)
+            {
+                SDL_RenderSetViewport(global::renderer, rect);
                 scene->Render();
+            }
+
+    if (data->highlight && data->cellSize)
+    {
+        SDL_RenderSetViewport(global::renderer, rect);
+
+        if (data->cellSize == 1)
+        {
+            Rectangle rect({0, 0, data->geometry->w, data->geometry->h}, COLOR_BLACK);
+            rect.Render();
+        }
+        else
+        {
+            Line line({0, 0}, {0, data->geometry->h});
+
+            for (size_t x = data->cellSize; x < data->geometry->w; x += data->cellSize)
+            {
+                line.SetStart({x, 0});
+                line.SetEnd({x, data->geometry->h});
+                line.Render();
+            }
+
+            for (size_t y = 0; y < data->geometry->h; y += data->cellSize)
+            {
+                line.SetStart({0, y});
+                line.SetEnd({data->geometry->w, y});
+                line.Render();
+            }
+            
+        }
+    }
 
     delete rect;
 }
@@ -157,5 +227,5 @@ Scene::~Scene()
 {
     Clear();
 
-    delete geometry;
+    delete data->geometry;
 }
