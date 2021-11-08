@@ -7,18 +7,18 @@
 #include "SDL_image.h"
 #include "global.hpp"
 
-namespace textures
+namespace engn::TextureManager
 {
   std::map<std::string, SDL_Texture *> *dict;
 
-  int init()
+  int Init()
   {
     dict = new std::map<std::string, SDL_Texture *>;
 
     return 0;
   }
 
-  SDL_Texture *&get(std::string path)
+  SDL_Texture *&GetTexture(std::string path)
   {
     if (dict->count(path) == 0)
     {
@@ -34,7 +34,7 @@ namespace textures
     return (*dict)[path];
   }
 
-  void clear(std::string path)
+  void Clear(std::string path)
   {
     std::map<std::string, SDL_Texture *>::iterator iterator;
 
@@ -46,7 +46,7 @@ namespace textures
     SDL_DestroyTexture(iterator->second);
   }
 
-  int quit()
+  int Quit()
   {
     std::map<std::string, SDL_Texture *>::iterator iterator;
 

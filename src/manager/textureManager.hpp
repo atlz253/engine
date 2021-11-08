@@ -5,16 +5,18 @@
 
 typedef struct SDL_Texture SDL_Texture;
 
-// TODO: + namespace engn
-namespace textures // TODO: namespace TextureManager
+namespace engn
 {
-    int init();
+    namespace TextureManager
+    {
+        int Init();
 
-    SDL_Texture *&get(std::string path); // TODO: smart pointers
+        SDL_Texture *&GetTexture(std::string path); // TODO: smart pointers
 
-    void clear(std::string path);
+        void Clear(std::string path);
 
-    int quit();
+        int Quit();
+    }
 }
 
 #endif // TEXTURE_MANAGER

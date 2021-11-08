@@ -11,18 +11,21 @@
 
 #include "type.hpp"
 
-namespace engine
+namespace engn
 {
-  bool init(INT32 w = 1280, INT32 h = 720); // TODO: flags? + window name
+  namespace engine
+  {
+    bool init(INT32 w = 1280, INT32 h = 720); // TODO: flags? + window name
 
-  bool quit();
-}
+    bool quit();
+  }
 
-namespace render
-{
-  bool clear();
+  namespace render
+  {
+    bool clear();
 
-  void present();
+    void present();
+  }
 }
 
 #endif // ENGINE

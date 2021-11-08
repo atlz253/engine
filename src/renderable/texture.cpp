@@ -28,7 +28,7 @@ Texture::Texture(std::string path, Rect geometry)
 {
     data = new struct texture;
     data->path = path;
-    data->texture = textures::get(path);
+    data->texture = TextureManager::GetTexture(path);
 
     data->tile = nullptr;
     data->flip = nullptr;

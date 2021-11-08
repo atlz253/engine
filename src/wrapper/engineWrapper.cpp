@@ -6,21 +6,21 @@ extern "C"
 {
     EXPORT bool EngineInit(INT32 w, INT32 h)
     {
-        return engine::init(w, h);
+        return engn::engine::init(w, h);
     }
 
     EXPORT bool EngineQuit()
     {
-        return engine::quit();
+        return engn::engine::quit();
     }
 
     EXPORT bool RenderClear()
     {
-        return render::clear();
+        return engn::render::clear();
     }
 
     EXPORT void RenderPresent()
     {
-        render::present();
+        engn::render::present();
     }
 }
