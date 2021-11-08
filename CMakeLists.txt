@@ -47,10 +47,10 @@ set(
     ${SRC_DIR}/renderable/line.cpp
     ${SRC_DIR}/renderable/rectangle.cpp
     ${SRC_DIR}/renderable/texture.cpp
-    ${SRC_DIR}/wrapper/engineWrapper.cpp
+    ${SRC_DIR}/wrapper/coreWrapper.cpp
     ${SRC_DIR}/wrapper/eventWrapper.cpp
     ${SRC_DIR}/wrapper/mouseWrapper.cpp
-    ${SRC_DIR}/engine.cpp
+    ${SRC_DIR}/core.cpp
     ${SRC_DIR}/exception.cpp
     ${SRC_DIR}/handler.cpp
     ${SRC_DIR}/global.cpp
@@ -72,7 +72,7 @@ set(
     ${SRC_DIR}/manager/eventManager.hpp
     ${SRC_DIR}/manager/textureManager.hpp
     ${SRC_DIR}/wrapper/wrapper.hpp
-    ${SRC_DIR}/engine.hpp
+    ${SRC_DIR}/core.hpp
     ${SRC_DIR}/global.hpp
 )
 

@@ -1,6 +1,6 @@
 #include "wrapper.hpp"
 
-#include "engine.hpp"
+#include "core.hpp"
 
 extern "C"
 {

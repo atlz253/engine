@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "eventManager.hpp"
-#include "engine.hpp"
+#include "core.hpp"
 #include "exception.hpp"
 
 using namespace engn;
