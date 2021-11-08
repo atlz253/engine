@@ -18,6 +18,20 @@ class MainScene : public Scene
 private:
     bool render = false;
 
+protected:
+    void Action() override
+    {
+        if (!render)
+        {
+            render = true;
+        }
+        else
+        {
+            std::this_thread::sleep_for(std::chrono::nanoseconds(5000000000));
+            events::quit();
+        }
+    }
+
 public:
     MainScene(Scene *scene, Rect geometry) : Scene(scene, geometry)
     {
@@ -50,19 +64,6 @@ public:
 
                 Add(child);
             }
-    }
-
-    void Process() override
-    {
-        if (!render)
-        {
-            render = true;
-        }
-        else
-        {
-            std::this_thread::sleep_for(std::chrono::nanoseconds(5000000000));
-            events::quit();
-        }
     }
 
     ~MainScene() {}
