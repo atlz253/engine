@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "event.hpp"
+#include "eventManager.hpp"
 #include "engine.hpp"
 #include "exception.hpp"
 
@@ -23,7 +23,7 @@ Handler::Handler()
 void Handler::Init(int w, int h) // TODO: remove this method
 {
     Core::Init(w, h);
-    events::init();
+    EventManager::Init();
 }
 
 void Handler::Start()
@@ -38,7 +38,7 @@ void Handler::SetScene(Scene *scene)
 
 void Handler::Loop()
 {
-    while (events::check())
+    while (EventManager::Check())
     {
         if (scene)
         {

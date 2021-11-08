@@ -42,6 +42,7 @@ set(
     ${SRC_DIR}/gui/text.cpp
     ${SRC_DIR}/input/keyboard.cpp
     ${SRC_DIR}/input/mouse.cpp
+    ${SRC_DIR}/manager/eventManager.cpp
     ${SRC_DIR}/manager/textureManager.cpp
     ${SRC_DIR}/renderable/line.cpp
     ${SRC_DIR}/renderable/rectangle.cpp
@@ -51,7 +52,6 @@ set(
     ${SRC_DIR}/wrapper/mouseWrapper.cpp
     ${SRC_DIR}/engine.cpp
     ${SRC_DIR}/exception.cpp
-    ${SRC_DIR}/event.cpp
     ${SRC_DIR}/handler.cpp
     ${SRC_DIR}/global.cpp
     ${SRC_DIR}/scene.cpp
@@ -69,10 +69,10 @@ set(
     ${INCLUDE_DIR}/time.hpp
     ${INCLUDE_DIR}/texture.hpp
     ${INCLUDE_DIR}/type.hpp
+    ${SRC_DIR}/manager/eventManager.hpp
     ${SRC_DIR}/manager/textureManager.hpp
     ${SRC_DIR}/wrapper/wrapper.hpp
     ${SRC_DIR}/engine.hpp
-    ${SRC_DIR}/event.hpp
     ${SRC_DIR}/global.hpp
 )
 

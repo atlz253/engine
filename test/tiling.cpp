@@ -5,7 +5,6 @@
 
 #include "time.hpp"
 #include "scene.hpp"
-#include "event.hpp"
 #include "texture.hpp"
 #include "primitive.hpp"
 

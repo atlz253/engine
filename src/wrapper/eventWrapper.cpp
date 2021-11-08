@@ -1,11 +1,11 @@
 #include "wrapper.hpp"
 
-#include "event.hpp"
+#include "eventManager.hpp"
 
 extern "C"
 {
     EXPORT bool EventCheck()
     {
-        return events::check();
+        return engn::EventManager::Check();
     }
 }

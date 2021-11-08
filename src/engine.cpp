@@ -6,7 +6,7 @@
 #include "SDL_ttf.h"
 #include "SDL_image.h"
 
-#include "event.hpp"
+#include "eventManager.hpp"
 #include "global.hpp"
 #include "textureManager.hpp"
 
@@ -56,7 +56,7 @@ namespace engn::Core
             std::cout << "Failed to create renderer:" << SDL_GetError() << std::endl;
         SDL_SetRenderDrawBlendMode(global::renderer, SDL_BLENDMODE_BLEND); // TODO: read docs about this
 
-        events::init();
+        EventManager::Init();
         TextureManager::Init();
 
         return false;

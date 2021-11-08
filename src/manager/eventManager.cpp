@@ -1,21 +1,21 @@
-#include "event.hpp"
+#include "eventManager.hpp"
 
 #include <iostream>
 
 #include "SDL.h"
 
-namespace events
+namespace engn::EventManager
 {
     SDL_Event *event;
 
-    bool init()
+    bool Init()
     {
         event = new SDL_Event;
         
         return false;
     }
 
-    bool check(void)
+    bool Check(void)
     {
         while (SDL_PollEvent(event))
         {
@@ -44,7 +44,7 @@ namespace events
         return true;
     }
 
-    void quit()
+    void Quit()
     {
         SDL_Event *event = new SDL_Event;
         event->type = SDL_QUIT;

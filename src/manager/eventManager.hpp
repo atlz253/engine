@@ -9,13 +9,16 @@
 #ifndef EVENT
 #define EVENT
 
-namespace events
+namespace engn
 {
-    bool init();
+  namespace EventManager
+  {
+    bool Init();
 
-    bool check(void);
+    bool Check(void);
 
-    void quit();
+    void Quit();
+  }
 }
 
 #endif // EVENT
