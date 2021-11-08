@@ -22,7 +22,7 @@ Handler::Handler()
 
 void Handler::Init(int w, int h) // TODO: remove this method
 {
-    engine::init(w, h);
+    Core::Init(w, h);
     events::init();
 }
 
@@ -42,12 +42,12 @@ void Handler::Loop()
     {
         if (scene)
         {
-            render::clear();
+            Render::Clear();
 
             scene->Process();
             scene->Render();
 
-            render::present();
+            Render::Present();
         }
     }
 }

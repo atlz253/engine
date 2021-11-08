@@ -13,18 +13,18 @@
 
 namespace engn
 {
-  namespace engine
+  namespace Core
   {
-    bool init(INT32 w = 1280, INT32 h = 720); // TODO: flags? + window name
+    bool Init(INT32 w = 1280, INT32 h = 720); // TODO: flags? + window name
 
-    bool quit();
+    bool Quit();
   }
 
-  namespace render
+  namespace Render
   {
-    bool clear();
+    bool Clear();
 
-    void present();
+    void Present();
   }
 }
 
