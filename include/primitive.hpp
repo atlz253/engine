@@ -14,7 +14,7 @@
 
 namespace engn
 {
-    class Rectangle final : public IScene, IMovable, IResizeable
+    class Rectangle final : public IRenderable, IMovable, IResizeable
     {
     private:
         Rect *rect; // TODO: struct rectangle
@@ -51,7 +51,7 @@ namespace engn
         ~Rectangle();
     };
 
-    class Line final : public IScene
+    class Line final : public IRenderable
     {
     private:
         struct line;

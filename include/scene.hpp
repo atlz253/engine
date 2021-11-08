@@ -14,15 +14,7 @@
 
 namespace engn
 {
-    class IScene // TODO: IRenderable?
-    {
-    public:
-        virtual void Render(void){};
-
-        virtual ~IScene() {}
-    };
-
-    class Scene : public IScene, IMovable, IResizeable, IMouseListener
+    class Scene : public IRenderable, IMovable, IResizeable, IMouseListener
     {
     private:
         struct scene;
@@ -68,7 +60,7 @@ namespace engn
         MouseButtons DblClick(void) override;
 
         /* SubScenes methods */
-        void Add(IScene *scene);
+        void Add(IRenderable *scene);
         void Clear(void);
 
         /* Grid methods */ // TODO: grid

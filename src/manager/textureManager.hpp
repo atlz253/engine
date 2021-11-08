@@ -5,7 +5,8 @@
 
 typedef struct SDL_Texture SDL_Texture;
 
-namespace textures
+// TODO: + namespace engn
+namespace textures // TODO: namespace TextureManager
 {
     int init();
 

@@ -15,7 +15,7 @@
 
 namespace engn
 {
-    class Texture final : public IScene, IMovable, IResizeable
+    class Texture final : public IRenderable, IMovable, IResizeable
     {
     private:
         struct texture;

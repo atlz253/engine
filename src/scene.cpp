@@ -12,7 +12,7 @@ using namespace engn;
 struct Scene::scene
 {
     SDL_Rect *geometry;
-    std::list<IScene *> *scenes;
+    std::list<IRenderable *> *items;
 
     UINT8 cellSize; // TODO gridW, gridH
     bool highlight;
@@ -28,7 +28,7 @@ Scene::Scene(Scene *parent, Rect geometry)
     this->parent = parent;
     
     data = new struct scene;
-    data->scenes = nullptr;
+    data->items = nullptr;
 
     data->cellSize = 1;
     data->highlight = false;
@@ -153,23 +153,23 @@ MouseButtons Scene::DblClick(void)
     return MouseLeftClick; // TODO: realize
 }
 
-void Scene::Add(IScene *scene)
+void Scene::Add(IRenderable *scene)
 {
-    if (!data->scenes)
-        data->scenes = new std::list<IScene *>();
+    if (!data->items)
+        data->items = new std::list<IRenderable *>();
 
-    data->scenes->push_back(scene);
+    data->items->push_back(scene);
 }
 
 void Scene::Clear(void)
 {
-    if (data->scenes)
+    if (data->items)
     {
-        for (IScene *scene : *data->scenes)
+        for (IRenderable *scene : *data->items)
             delete scene;
 
-        delete data->scenes;
-        data->scenes = nullptr;
+        delete data->items;
+        data->items = nullptr;
     }
 }
 
@@ -185,8 +185,8 @@ void Scene::SetGrid(UINT8 size)
 
 void Scene::Process(void)
 {
-    if (data->scenes)
-        for (IScene *scene : *data->scenes)
+    if (data->items)
+        for (IRenderable *scene : *data->items)
         {
             Scene *s = dynamic_cast<Scene *>(scene); // FIXME: This is not good
 
@@ -210,8 +210,8 @@ void Scene::Render(void) // TODO: objects visability check
         rect->y = (data->geometry->y + parent->GetY());
     }
 
-    if (data->scenes)
-        for (IScene *scene : *data->scenes)
+    if (data->items)
+        for (IRenderable *scene : *data->items)
             if (scene)
             {
                 SDL_RenderSetViewport(global::renderer, rect);

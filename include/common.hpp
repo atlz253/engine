@@ -13,7 +13,15 @@
 
 namespace engn
 {
-    class IMovable // TODO: comments
+    class IRenderable // TODO: comments
+    {
+    public:
+        virtual void Render(void){};
+
+        virtual ~IRenderable() {}
+    };
+
+    class IMovable
     {
     public:
         virtual INT16 GetX(void) = 0;

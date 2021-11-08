@@ -19,7 +19,7 @@ namespace engn
         ~Font();
     };
 
-    class Text final : public IScene, IMovable
+    class Text final : public IRenderable, IMovable
     {
     private:
         struct text;
