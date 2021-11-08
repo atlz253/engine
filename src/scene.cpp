@@ -43,6 +43,20 @@ INT16 Scene::GetX(void)
     return data->geometry->x;
 }
 
+INT16 Scene::GetGlobalX(void)
+{
+    INT16 position;
+    Scene *scene = parent;
+
+    while (scene)
+    {
+        position += scene->GetX();
+        scene = scene->parent;
+    }
+
+    return position + data->geometry->x;
+}
+
 void Scene::SetX(INT16 x)
 {
     data->geometry->x = x;
@@ -51,6 +65,20 @@ void Scene::SetX(INT16 x)
 INT16 Scene::GetY(void)
 {
     return data->geometry->y;
+}
+
+INT16 Scene::GetGlobalY(void)
+{
+    INT16 position;
+    Scene *scene = parent;
+
+    while (scene)
+    {
+        position += scene->GetY();
+        scene = scene->parent;
+    }
+
+    return position + data->geometry->y;
 }
 
 void Scene::SetY(INT16 y)
@@ -169,7 +197,7 @@ void Scene::Process(void)
     Action();
 }
 
-void Scene::Render(void)
+void Scene::Render(void) // TODO: objects visability check
 {
     SDL_Rect *rect = nullptr;
 

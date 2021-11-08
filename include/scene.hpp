@@ -38,9 +38,11 @@ namespace engn
 
         /* Position methods */
         INT16 GetX(void) override;
+        INT16 GetGlobalX(void);
         void SetX(INT16 x) override;
 
         INT16 GetY(void) override;
+        INT16 GetGlobalY(void);
         void SetY(INT16 y) override;
 
         void SetPosition(INT16 x, INT16 y) override;
