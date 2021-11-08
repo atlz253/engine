@@ -67,7 +67,8 @@
         "typeindex": "cpp",
         "variant": "cpp",
         "*.ipp": "cpp",
-        "io": "cpp"
+        "io": "cpp",
+        "core": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
